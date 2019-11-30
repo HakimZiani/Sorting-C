@@ -1,7 +1,9 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
 void sort_vector(int algo,int order,int *vector)
 {
-  if algo==1
+
 }
 int main()
 {
@@ -11,12 +13,13 @@ int main()
   printf("2- Matrix");
   printf("3- List");
   scanf("%d",&type);
-
+system("cls || clear");
   printf("Please choose the sorting algorithm you want to use :\n" );
   printf("1- Bubble sort \n");
   printf("2- Selecetion sort \n");
   printf("3- Insertion sort \n");
   scanf("%d",&algo);
+  system("cls || clear");
 
   printf("Please select the order of the sorting :\n" );
   printf("1- Ascendent \n");
