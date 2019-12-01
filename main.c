@@ -123,33 +123,34 @@ void selection_sort_array(int order,int array[],int n)
 int main()
 {
   int *array;
-  int x;
+  int x=-1;
   int type=0,algo=0,order=0;
+  do{
   printf("Dear user, Please select the type of your structure : \n");
   printf("1- Vector\n");
   printf("2- Matrix\n");
   printf("3- List\n");
   scanf("%d",&type);
-  system("cls || clear");
-
+  system("cls || clear");}while(type!=1 && type!=2 && type!=3);
+  do{
   printf("Please choose the sorting algorithm you want to use :\n" );
   printf("1- Bubble sort \n");
   printf("2- Selecetion sort \n");
   printf("3- Insertion sort \n");
   scanf("%d",&algo);
-  system("cls || clear");
-
+  system("cls || clear");}while(algo!=1 && algo!=2);
+  do{
   printf("Please select the order of the sorting :\n" );
   printf("1- Ascending \n");
   printf("2- Descending \n");
-  scanf("%d",&order);
+  scanf("%d",&order);}while(order!=1 && order!=2);
 
   if (type==1)
   {
     //inputting the array
-
-    printf("Enter number of intergers : ");
-    scanf("%d",&x);
+    do
+    {printf("Enter number of intergers : ");
+    scanf("%d",&x);}while(x>=1000 || x<0);
     array = input_array(x);
     printf(" Before :\n" );
     print_array(array,x);
