@@ -52,11 +52,45 @@ void print_matrix(int **M,int n,int m)
 {
   for (int i=0;i<n;i++)
   {
-    for(int j=0;j<n;j++)
+    for(int j=0;j<m;j++)
     {
       printf("%d  ",M[i][j] );
     }
     printf("\n" );
   }
 
+}
+int *matrix_transform(int **M,int n, int m)
+{
+  int *A;
+  int k=0;
+  A=(int *)malloc((n*m)*sizeof(int));
+  for (int i=0;i<n;i++)
+  {
+    for(int j=0;j<m;j++)
+    {
+      A[k]=M[i][j];
+      k++;
+    }
+  }
+  return A;
+}
+int **matrix_undo(int array[],int n, int m)
+{
+  int x=0;
+  int **M;
+  M=(int **)malloc(n* sizeof(int *));
+  for (int i=0;i<n;i++)
+  {
+    M[i]=(int *)malloc(m*sizeof(int));
+  }
+  for(int i=0;i<=n-1;i++)
+  {
+    for(int j=0;j<=m-1;j++)
+    {
+    M[i][j]=array[x];
+    x++;
+    }
+  }
+  return M;
 }
