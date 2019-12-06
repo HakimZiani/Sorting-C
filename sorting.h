@@ -133,9 +133,34 @@ void matrix_sort_line(int **M,int n,int m,int algo,int order)
   else if (algo ==2)
   {
     //seldection sort
+    for(int i=0;i<n;i++)
+    {
+      selection_sort_array(order,M[i],m);
+    }
   }
   else if (algo==3)
   {
       //insertion sort
+      for(int i=0;i<n;i++)
+      {
+        insertion_sort_array(order,M[i],m);
+      }
   }
+}
+// sort matrix all in one
+void matrix_sort_all(int order,int algo,int array[],int x)
+{
+  if(algo ==1)
+  {
+    Bubble_sort_vector(order ,array,x);
+  }
+  else if (algo ==2)
+  {
+    selection_sort_array(order,array,x);
+  }
+  else
+  {
+    insertion_sort_array(order,array,x);
+  }
+
 }
