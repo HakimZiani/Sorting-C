@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"function.h"
-#include"sorting.h"
+#include<string.h>
+#include"array_functions.h"
+#include"array_sorting.h"
+#include"matrix_functions.h"
+#include"matrix_sorting.h"
 //------------------------------------------------------------------
 int main()
 {
@@ -10,7 +13,8 @@ int main()
   int type=0,algo=0,order=0;
   int n=0,m=0;
   int **M;
-  int al;
+  int al,matrix_type;
+  char **C;
   do{
   printf("Dear user, Please select the type of your structure : \n");
   printf("1- Vector\n");
@@ -56,34 +60,51 @@ int main()
     print_array(array,x);
   }
   else if(type==2)
-  {
+  {do{  
+    printf("what type of matrix do you wanna sort \n");
+     printf("1- integers matrix\n");
+     printf("2- characters matrix\n");
+     scanf("%d",&matrix_type);}while(matrix_type!=1 && matrix_type!=2);
     /*Fonction 2 Matrix with algo and order  */
     printf("Enter dimension of matrix :  " );
     scanf("%d %d",&n,&m );
+    if(matrix_type==1)
+    { 
     M=input_matrix(n,m);
     do{
     printf("Do you want to sort it line per line or all in one? :\n ");
-    printf("1- Line per line. \n" );
+    printf("1- Line per line.\n" );
     printf("2- All in one.\n");
     scanf("%d",&al );}while(al!=1 && al!=2);
-
+    printf("Before:\n");
     print_matrix(M,n,m);
     if (al ==1)
     {
     matrix_sort_line(M,n,m,algo,order);
   }else
   {
-    matrix_transform(M,n,m);
+    array=matrix_transform(M,n,m);
     matrix_sort_all(order,algo,array,n*m);
     M=matrix_undo(array,n,m);
   }
     print_matrix(M,n,m);
   }
+  else{
+  C=input_matrix_char(n,m);
+  printf("Before:\n");
+  print_matrix_char(C,n,m);
+  matrix_char_sort(C,algo,order,n,m);
+  printf("after:\n");
+  print_matrix_char(C,n,m);
+
+
+  }}
+
   else if (type== 3)
   {
-    /*fonction 3 witg algo and order */
+    /*fonction 3 with algo and order */
   }
 
-
-  return 0;
+return 0;
+  
 }
