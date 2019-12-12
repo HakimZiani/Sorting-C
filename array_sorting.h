@@ -1,7 +1,6 @@
 //Bubble sort algorithm for both orders
 void Bubble_sort_vector(char order,int vector[],int n)
 {
-  int temp=0;
   int nbcmp=0;
   int nbperm=0;
   for(int i=0;i<n-1;i++)
@@ -57,7 +56,6 @@ void insertion_sort_array(char order,int array[],int n)
       {
         array[j+1]=array[j];
         j--;
-
       }
       array[j+1]=alpha;
     }
@@ -97,7 +95,7 @@ void selection_sort_array(char order,int array[],int n)
           nbcmp+=1;
 
         }
-      if(alpha!=i){ 
+      if(alpha!=i){
         swap(&array[i],&array[alpha]);
         nbperm++;}
     }
@@ -111,7 +109,7 @@ void selection_sort_array(char order,int array[],int n)
 
 
       }
-     if(alpha!=i){ 
+     if(alpha!=i){
         swap(&array[i],&array[alpha]);
         nbperm++;}
 
@@ -124,4 +122,51 @@ void selection_sort_array(char order,int array[],int n)
 printf("Number of comp : %d :\n",nbcmp);
 printf("Number of permutations : %d \n",nbperm );
 printf("------------------------------\n" );
+}
+// Additional sorting algorithm
+// Shaker sort
+void shaker_sort_array(char order,int array[],int n)
+{
+  int nbperm=0,nbcomp=0;
+  for(int i=0 ;i<n-1;i++)
+  {
+    for(int j=i;j<n-1-i;j++)
+    {
+      if(order=='1')
+      {
+       if(array[j]>array[j+1])
+        {
+        swap(&array[j],&array[j+1]);
+        nbcomp++;
+        nbperm++;
+        }
+      }else{
+        if(array[j]<array[j+1])
+         {
+           nbcomp++;
+           nbperm++;
+         swap(&array[j],&array[j+1]);
+      }}
+    }
+    for(int l=n-1-i;l>i;l--)
+    {
+      if(order =='1' )
+      {
+      if(array[l]<array[l-1])
+      {nbcomp++;
+      nbperm++;
+        swap(&array[l],&array[l-1]);
+      }}
+      else{
+        if(array[l]>array[l-1])
+        {
+          nbcomp++;
+          nbperm++;
+          swap(&array[l],&array[l-1]);
+        }
+      }
+    }
+  }
+  printf("Number of permutations : %d \n",nbperm );
+  printf("Number of comparisons  : %d\n",nbcomp );
 }

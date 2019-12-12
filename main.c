@@ -6,6 +6,8 @@
 #include"array_sorting.h"
 #include"matrix_functions.h"
 #include"matrix_sorting.h"
+#include"list_functions.h"
+#include"list_sorting.h"
 //------------------------------------------------------------------
 int main()
 {
@@ -16,6 +18,7 @@ int main()
   int **M;
   char al;
   char **C;
+  element *Head;
   do{
   printf("Dear user, Please select the type of your structure : \n");
   printf("1- Vector\n");
@@ -28,8 +31,9 @@ int main()
   printf("1- Bubble sort \n");
   printf("2- Selecetion sort \n");
   printf("3- Insertion sort \n");
+  printf("4- Shaker sort (Additionl) \n" );
   scanf("%c",&algo);
-  system("cls || clear");}while(isdigit(algo)==0 || (algo!='1' && algo!='2' && algo!='3'));
+  system("cls || clear");}while(isdigit(algo)==0 || (algo!='1' && algo!='2' && algo!='3' && algo!='4'));
   do{
   printf("Please select the order of the sorting :\n" );
   printf("1- Ascending \n");
@@ -57,11 +61,15 @@ int main()
     {
       insertion_sort_array(order,array,x);
     }
+    else if(algo =='4')
+    {
+    shaker_sort_array(order,array,x);
+    }
     printf(" After :\n" );
     print_array(array,x);
   }
   else if(type=='2')
-  {do{  
+  {do{
     printf("what type of matrix do you wanna sort \n");
      printf("1- integers matrix\n");
      printf("2- characters matrix\n");
@@ -70,7 +78,7 @@ int main()
     printf("Enter dimension of matrix :  " );
     scanf("%d %d",&n,&m );
     if(matrix_type=='1')
-    { 
+    {
     M=input_matrix(n,m);
     do{
     printf("Do you want to sort it line per line or all in one? :\n");
@@ -98,14 +106,17 @@ int main()
   printf("after:\n");
   print_matrix_char(C,n,m);
 
-
   }}
-
   else if (type=='3')
   {
-    /*fonction 3 with algo and order */
+    printf("Enter number of elements of the list : " );
+    scanf("%d ",&x);
+    Head = create_list(x);
+    print_list(Head);
+    bubble_sort_list(order,Head,x);
+    print_list(Head);
   }
 
 return 0;
-  
+
 }
