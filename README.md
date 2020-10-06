@@ -1,1 +1,2 @@
-# Sorting-C-project
+# Sorting-C
+Simple implementation of common sorting algorithms in
